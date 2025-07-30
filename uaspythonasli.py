@@ -124,5 +124,16 @@ elif menu == "2":
             else:
                 st.warning("Harap isi semua kolom dengan benar!")
 
+elif menu == "3":
+    st.subheader("✔ Tandai Barang Sudah Dibeli")
+    if st.session_state.data_barang:
+        for i, barang in enumerate(st.session_state.data_barang):
+            if st.checkbox(f"{barang}", key=f"beli_{i}"):
+                st.session_state.data_barang[i].is_beli = True
+            else:
+                st.session_state.data_barang[i].is_beli = False
+        st.success("Perubahan status berhasil disimpan.")
+    else:
+        st.info("Belum ada barang dalam daftar.")
 
 
