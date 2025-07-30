@@ -86,5 +86,23 @@ with col2:
     """, unsafe_allow_html=True)
 
 menu = st.text_input("Masukkan angka menu (1-5):")
+if menu == "1":
+    st.subheader("📦 Daftar Barang")
+    if st.session_state.data_barang:
+        for i, barang in enumerate(st.session_state.data_barang):
+            status = "✅" if barang.is_beli else "❌"
+            warna = {
+                "Primer": "🔴",
+                "Sekunder": "🟠",
+                "Tersier": "🟢"
+            }[barang.kategori]
+            st.markdown(f"""
+                <div class="box-shadow">
+                    <strong>{i+1}. {status} {barang.nama}</strong><br>
+                    Harga: Rp{barang.harga:,} | Jumlah: {barang.jumlah} | Kategori: {warna} {barang.kategori}
+                </div>
+            """, unsafe_allow_html=True)
+    else:
+        st.info("Belum ada barang dalam daftar.")
 
 
