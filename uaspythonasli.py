@@ -193,5 +193,11 @@ elif menu == "5":
     else:
         st.info("Belum ada barang dalam daftar.")
 
+elif menu != "":
+    st.warning("Masukkan angka 1 - 5 sesuai menu.")
+
+st.markdown("---")
+st.markdown("<center><span style='color:gray;'>Dibuat oleh Chelcia dan Himaa | Powered by Streamlit</span></center>", unsafe_allow_html=True)
+
 
 
