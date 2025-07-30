@@ -105,4 +105,24 @@ if menu == "1":
     else:
         st.info("Belum ada barang dalam daftar.")
 
+elif menu == "2":
+    st.subheader("➕ Tambah Barang")
+    with st.form(key='tambah_barang'):
+        nama = st.text_input("Nama Barang")
+        col1, col2 = st.columns(2)
+        with col1:
+            harga = st.number_input("Harga", min_value=0, step=1000)
+        with col2:
+            jumlah = st.number_input("Jumlah", min_value=1)
+        kategori = st.selectbox("Kategori", ["Primer", "Sekunder", "Tersier"])
+        
+        if st.form_submit_button("Simpan Barang"):
+            if nama and harga > 0 and jumlah > 0:
+                barang = Barang(nama, harga, jumlah, kategori)
+                st.session_state.data_barang.append(barang)
+                st.success("Barang berhasil ditambahkan!")
+            else:
+                st.warning("Harap isi semua kolom dengan benar!")
+
+
 
